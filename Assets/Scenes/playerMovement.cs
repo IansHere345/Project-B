@@ -59,6 +59,7 @@ public class playerMovement : MonoBehaviour
                 HorizontalMove = 1f;
             }
         }
+        // This makes it so one player uses WASD and the other uses arrow keys with the press of a button in the inspector
         
         Vector3 moveDirection = new Vector3(HorizontalMove, 0, VerticalMove);
         moveDirection.Normalize();
@@ -67,7 +68,9 @@ public class playerMovement : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             Quaternion toRotate = Quaternion.LookRotation(moveDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
+            transform.rotation = toRotate;
+            //Quaternion toRotate = Quaternion.LookRotation(moveDirection, Vector3.up);
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
         }
         //Sources Used: https://www.youtube.com/watch?v=F7bdwOFofLk&list=PLkp23zg4CAMV8fcsUYX1EwihX7WXhFH6N&index=1
         // https://www.youtube.com/watch?v=v6Kh748AwJU&list=PLkp23zg4CAMV8fcsUYX1EwihX7WXhFH6N&index=2
